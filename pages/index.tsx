@@ -9,8 +9,8 @@ export default function IndexPage() {
         <a>About</a>
       </Link>
       <br />
-      <Link href="/about">
-        <a>About</a>
+      <Link href="/test">
+        <a>test</a>
       </Link>
     </div>
   )
