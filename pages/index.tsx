@@ -8,6 +8,10 @@ export default function IndexPage() {
       <Link href="/about">
         <a>About</a>
       </Link>
+      <br />
+      <Link href="/about">
+        <a>About</a>
+      </Link>
     </div>
   )
 }
