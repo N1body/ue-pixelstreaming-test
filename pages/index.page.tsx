@@ -12,6 +12,7 @@ import {
   playVideoStream
 } from './epic-tool/app'
 import { useState } from "react";
+import Head from "next/head";
 const { Header, Sider, Content } = Layout;
 
 const Index = styled.div`
@@ -118,6 +119,9 @@ export default function IndexPage() {
   };
   return (
     <Index>
+      <Head>
+        <title>PixelStreaming测试</title>
+      </Head>
       <Layout className="page">
         <Sider className="side" width={450}>
           <div className="message-box">

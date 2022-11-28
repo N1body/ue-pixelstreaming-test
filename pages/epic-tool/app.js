@@ -1713,7 +1713,7 @@ function showOnScreenKeyboard (command) {
     editTextButton?.classList.remove('hiddenState')
     // Place the 'edit text' button near the UE4 input widget.
     const pos = unquantizeAndDenormalizeUnsigned(command.x, command.y)
-    if (typeof editTextButton !== undefined) {
+    if (typeof editTextButton.style !== undefined) {
       editTextButton.style.top = pos.y.toString() + 'px'
       editTextButton.style.left = (pos.x - 40).toString() + 'px'
     }
