@@ -80,7 +80,7 @@ const Index = styled.div`
 `
 
 export default function IndexPage() {
-  const [receiveMessage, setReceiveMessage] = useState('123')
+  const [receiveMessage, setReceiveMessage] = useState('')
   const [connectUrl, setConnectUrl] = useState('')
   const connectUe = () => {
     load(`http://${connectUrl}`)
@@ -162,7 +162,7 @@ export default function IndexPage() {
             </div>
             <div className="ue-receive">
               <p className="receive-title">UE消息监听:</p>
-              <p className="receive-content">{receiveMessage}</p>
+              <p className="receive-content">{receiveMessage || '暂无消息'}</p>
             </div>
           </Header>
           <Content className="content">
