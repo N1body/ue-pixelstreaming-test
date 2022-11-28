@@ -34,6 +34,7 @@ const Index = styled.div`
     padding: 0 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   .side {
     background: #252f3f;
