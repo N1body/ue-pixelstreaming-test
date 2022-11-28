@@ -454,11 +454,11 @@ function playVideoStream () {
 function showPlayOverlay () {
   const img = document.createElement('img')
   img.id = 'playButton'
-  img.src = require('./Play.png')
+  // img.src = require('./Play.png')
   img.alt = 'Start Streaming'
-  setOverlay('clickableState', img, event => {
-    playVideoStream()
-  })
+  // setOverlay('clickableState', img, event => {
+  //   playVideoStream()
+  // })
   shouldShowPlayOverlay = false
 }
 
@@ -2215,5 +2215,6 @@ export {
   addResponseEventListener,
   removeResponseEventListener,
   closeWs,
+  playVideoStream,
   ws
 }

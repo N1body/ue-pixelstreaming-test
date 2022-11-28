@@ -9,6 +9,7 @@ import {
   closeWs,
   addResponseEventListener,
   emitUIInteraction,
+  playVideoStream
 } from './epic-tool/app'
 import { useState } from "react";
 const { Header, Sider, Content } = Layout;
@@ -93,6 +94,9 @@ export default function IndexPage() {
     load(`http://${connectUrl}`)
     inputOptions.controlScheme = ControlSchemeType.HoveringMouse
     inputOptions.fakeMouseWithTouches = true 
+    setTimeout(() => {
+      playVideoStream()
+    }, 500)
     addResponseEventListener('handle_responses', handleResponese)
   }
   const handleResponese = (data) => {
