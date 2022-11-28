@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Layout, Button, Form, Input, Space  } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import Player from './player'
+import Player from './player.page'
 import {
   load,
   ControlSchemeType,
