@@ -86,13 +86,22 @@ export default function IndexPage() {
     load(`http://${connectUrl}`)
     inputOptions.controlScheme = ControlSchemeType.HoveringMouse
     inputOptions.fakeMouseWithTouches = true 
+    addResponseEventListener('handle_responses', handleResponese)
+  }
+  const handleResponese = (data) => {
+    console.log('接收到消息:', data);
+    setReceiveMessage(data)
   }
   const connectClose = () => {
     load('http://0.0.0.0')
     closeWs()
   }
-  const onFinish = (values: any) => {
-    console.log('Received values of form:', values);
+  const sendMessgae = (values: any) => {
+    const descriptor = values.message.reduce((pre, item) => {
+      return {...pre, [item.field]: item.value}
+    }, {})
+    console.log('descriptor:', descriptor);
+    emitUIInteraction(descriptor)
   };
   return (
     <Index>
@@ -100,8 +109,8 @@ export default function IndexPage() {
         <Sider className="side" width={450}>
           <div className="message-box">
             <h1 className="message-title">PixelStreaming Test</h1>
-            <Form className="message-form" onFinish={onFinish} autoComplete="off">
-              <Form.List name="users">
+            <Form className="message-form" onFinish={sendMessgae} autoComplete="off">
+              <Form.List name="message">
                 {(fields, { add, remove }) => (
                   <>
                     {fields.map(({ key, name, ...restField }) => (
