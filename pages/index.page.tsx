@@ -23,7 +23,7 @@ const Index = styled.div`
     height: 100%;
   }
   .header {
-    height: 15vh;
+    height: 20vh;
     background: #cbcbcb;
     padding-inline: 0;
     line-height: inherit;
@@ -77,11 +77,18 @@ const Index = styled.div`
     align-items: center;
     column-gap: 10px;
   }
+  .url-show {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    margin-left: 30px;
+  }
 `
 
 export default function IndexPage() {
   const [receiveMessage, setReceiveMessage] = useState('')
-  const [connectUrl, setConnectUrl] = useState('')
+  const [connectUrl, setConnectUrl] = useState('0.0.0.0')
+  const [lastMessge, setLastMessage] = useState('')
   const connectUe = () => {
     load(`http://${connectUrl}`)
     inputOptions.controlScheme = ControlSchemeType.HoveringMouse
@@ -101,6 +108,7 @@ export default function IndexPage() {
       return {...pre, [item.field]: item.value}
     }, {})
     console.log('descriptor:', descriptor);
+    setLastMessage(JSON.stringify(descriptor))
     emitUIInteraction(descriptor)
   };
   return (
@@ -159,10 +167,18 @@ export default function IndexPage() {
                 <Button type="primary" className="btn-connect" onClick={connectUe}>连接</Button>
                 <Button onClick={connectClose}>断开连接</Button>
               </div>
+              <div className="url-show">
+                <p>当前连接地址: </p>
+                <p style={{ color: '#3875f6' }}>{connectUrl}</p>
+              </div>
+            </div>
+            <div className="ue-receive">
+              <p className="receive-title">消息记录(最后一条):</p>
+              <p style={{ color: 'green' }} className="receive-content">{lastMessge || '暂无记录'}</p>
             </div>
             <div className="ue-receive">
               <p className="receive-title">UE消息监听:</p>
-              <p className="receive-content">{receiveMessage || '暂无消息'}</p>
+              <p style={{ color: 'red' }} className="receive-content">{receiveMessage || '暂无消息'}</p>
             </div>
           </Header>
           <Content className="content">
