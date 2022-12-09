@@ -11,7 +11,7 @@ import {
   emitUIInteraction,
   playVideoStream
 } from './epic-tool/app'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 const { Header, Sider, Content } = Layout;
 
@@ -90,9 +90,12 @@ const Index = styled.div`
 
 export default function IndexPage() {
   const [receiveMessage, setReceiveMessage] = useState('')
-  const [connectUrl, setConnectUrl] = useState('0.0.0.0')
+  const [connectUrl, setConnectUrl] = useState('192.168.199.83')
   const [lastMessge, setLastMessage] = useState('')
-  const connectUe = () => {
+  useEffect(() => {
+    connectUe(connectUrl)
+  }, [])
+  const connectUe = (connectUrl) => {
     load(`http://${connectUrl}`)
     inputOptions.controlScheme = ControlSchemeType.HoveringMouse
     inputOptions.fakeMouseWithTouches = true 
@@ -106,7 +109,6 @@ export default function IndexPage() {
     setReceiveMessage(data)
   }
   const connectClose = () => {
-    load('http://0.0.0.0')
     closeWs()
   }
   const sendMessgae = (values: any) => {
@@ -173,7 +175,7 @@ export default function IndexPage() {
                 setConnectUrl(value.target.value)
               }}/>
               <div className="ue-operation">
-                <Button type="primary" className="btn-connect" onClick={connectUe}>连接</Button>
+                <Button type="primary" className="btn-connect" onClick={() => {connectUe(connectUrl)}}>连接</Button>
                 <Button onClick={connectClose}>断开连接</Button>
               </div>
               <div className="url-show">

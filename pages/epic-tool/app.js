@@ -619,6 +619,9 @@ function setupWebRtcPlayer (htmlElement, config) {
         webRtcPlayerObj.onVideoInitialised
       ) {
         webRtcPlayerObj.onVideoInitialised()
+        if (webRtcPlayer.testMessage) {
+          emitUIInteraction(webRtcPlayer.testMessage)
+        }
       }
     }
   }
@@ -2171,7 +2174,6 @@ function connect () {
     }
 
     showTextOverlay(`连接断开: ${event.reason}`)
-    const reclickToStart = setTimeout(start, 4000)
   }
 }
 
@@ -2195,6 +2197,7 @@ function onConfig (config) {
 }
 
 function load (url) {
+  // webRtcPlayer.testMessage = testMessage
   ue_url = url
   setupHtmlEvents()
   setupFreezeFrameOverlay()
