@@ -90,11 +90,11 @@ const Index = styled.div`
 
 export default function IndexPage() {
   const [receiveMessage, setReceiveMessage] = useState('')
-  const [connectUrl, setConnectUrl] = useState('192.168.199.83')
+  const [connectUrl, setConnectUrl] = useState('')
   const [lastMessge, setLastMessage] = useState('')
-  useEffect(() => {
+  /* useEffect(() => {
     connectUe(connectUrl)
-  }, [])
+  }, []) */
   const connectUe = (connectUrl) => {
     load(`http://${connectUrl}`)
     inputOptions.controlScheme = ControlSchemeType.HoveringMouse
