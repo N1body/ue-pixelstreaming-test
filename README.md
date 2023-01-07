@@ -1,8 +1,8 @@
-# Hello World example
+# UE像素流测试网页
 
-This example shows the most basic idea behind Next. We have 2 pages: `pages/index.tsx` and `pages/about.tsx`. The former responds to `/` requests and the latter to `/about`. Using `next/link` you can add hyperlinks between them with universal routing capabilities. The `day` directory shows that you can have subdirectories.
+该项目是开发UE像素流相关项目时开发的一个测试网页，用来测试通过推流地址连接UE像素流推送画面，并且UE与前端互发消息测试。
 
-## Deploy your own
+## 功能
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/hello-world)
 
